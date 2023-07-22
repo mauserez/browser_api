@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Websocket + API</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<div class="chat">
+			<div class="chat__status">&nbsp;</div>
+			<div class="chat__body"></div>
+			<div class="chat__panel">
+				<input
+					name="chat_message"
+					class="chat__message-input"
+					placeholder="Сообщение..."
+					value=""
+				/>
+				<button class="chat__button chat__send-button">
+					<div>
+						<i class="bi bi-send"></i>
+					</div>
+				</button>
+				<button class="chat__button chat__send-geo-button">
+					<div>
+						<i class="bi bi-geo-alt"></i>
+					</div>
+				</button>
+			</div>
+		</div>
+		<script src="messenger.js"></script>
+		<script>
+			window.onload = () => {
+				const webSocket = new WebSocket("wss://echo-ws-service.herokuapp.com/");
+				const chatMessageContainer = document.querySelector(".chat__body");
+				const sendBtn = document.querySelector(".chat__send-button");
+				const sendGeoBtn = document.querySelector(".chat__send-geo-button");
+				const messageInput = document.querySelector(".chat__message-input");
+
+				let messenger = new Messenger(
+					chatMessageContainer,
+					messageInput,
+					webSocket,
+					sendBtn,
+					sendGeoBtn
+				);
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,173 @@
+* {
+	box-sizing: border-box;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.chat {
+	display: flex;
+	flex-direction: column;
+	height: 600px;
+	width: 450px;
+	border: 1px solid #ddd;
+	border-radius: 13px;
+	overflow: hidden;
+	position: relative;
+}
+
+.chat__status {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #f80909;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+}
+
+.chat__status.online {
+	background-color: #4bd44b;
+	animation-name: scale;
+	animation-duration: 1s;
+}
+
+.chat__body {
+	width: 100%;
+	padding: 30px 15px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: start;
+	gap: 15px;
+	overflow: auto;
+	height: calc(100% - 60px);
+}
+
+.chat__message {
+	border-radius: 7px;
+	color: #666;
+	padding: 15px;
+	display: flex;
+	flex: 0 0 51%;
+	font-size: 16px;
+	word-break: break-word;
+}
+
+.chat__user-message,
+.chat__geo-message {
+	background-color: #c8e9ed;
+	margin-left: auto;
+}
+
+.chat__server-message {
+	background-color: #deddff;
+}
+
+.chat__panel {
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.chat__message-input {
+	height: 100%;
+	flex: 1;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	border: none;
+	border-top: 1px solid #ddd;
+	outline: none;
+	color: #666;
+}
+
+.chat__button {
+	height: 100%;
+	display: flex;
+	padding: 5px 10px;
+	align-items: center;
+	border: none;
+	border-top: 1px solid #ddd;
+	width: 50px;
+	justify-content: center;
+	font-size: 25px;
+	color: #666;
+	cursor: pointer;
+	background-color: #fff;
+	outline: none;
+}
+
+.chat__button > div {
+	margin-right: 10px;
+	border-radius: 9px;
+	border: 1px solid #ddd;
+	padding: 10px;
+	display: flex;
+}
+
+.chat__button i {
+	font-size: 18px;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.2s, color 0.2s, transform 1s;
+}
+
+.chat__button > div:hover {
+	background-color: #8fbec3;
+	color: #fff;
+}
+
+.rotate {
+	animation: rotate 4s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes scale {
+	0% {
+		scale: 1;
+	}
+
+	50% {
+		scale: 1.4;
+	}
+
+	100% {
+		scale: 1;
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Works on Firefox */
+* {
+	scrollbar-width: thin;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #c8e9ed;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 15px;
+	border: 3px solid #8fbec3;
+}

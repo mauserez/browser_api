@@ -1,0 +1,62 @@
+<style>
+	.btn {
+		border: 1px solid #ddd;
+		border-radius: 13px;
+		background-color: #fff;
+		color: #666;
+		height: 60px;
+		font-size: 20px;
+		width: 200px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+		cursor: pointer;
+		transition: all 0.5s;
+	}
+
+	.clicked {
+		background-color: #b571ea;
+		color: #fff;
+	}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button class="btn">
+			Кнопка
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="32"
+				height="32"
+				fill="currentColor"
+				class="btn-icon"
+				viewBox="0 0 16 16"
+			>
+				<path
+					d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904-2.854a.5.5 0 1 1 .707.708L6.707 9.95h2.768a.5.5 0 1 1 0 1H5.5a.5.5 0 0 1-.5-.5V6.475a.5.5 0 1 1 1 0v2.768l4.096-4.097z"
+				/>
+			</svg>
+		</button>
+	</body>
+
+	<script>
+		let screen = window.screen;
+		let iconPathDefault = (window.onload = () => {
+			document.querySelector(".btn").addEventListener("click", function (e) {
+				alert(
+					`Параметры экрана\nШирина ${screen.width}px\nВысота ${screen.height}px`
+				);
+			});
+		});
+	</script>
+</html>
