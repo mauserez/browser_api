@@ -76,7 +76,10 @@ class Messenger {
 			Фокус поля воода
 		*/
 
-		this.messageInput.value = "";
+		if (this.messageType === "user") {
+			this.messageInput.value = "";
+		}
+
 		this.chatMessageContainer.scrollTop =
 			this.chatMessageContainer.scrollHeight;
 		this.messageInput.focus();
@@ -101,7 +104,7 @@ class Messenger {
 
 		this.chatMessageContainer.insertAdjacentHTML("beforeend", messageTemplate);
 
-		this.messageType === "user" ? this.refreshMessageContainer() : "";
+		this.refreshMessageContainer();
 	}
 
 	addMessage(message = "", messageType = "user") {
@@ -129,7 +132,8 @@ class Messenger {
 		this.webSocket.onclose = (e) => {};
 
 		this.webSocket.onmessage = (e) => {
-			this.addMessage(e.data.split("").reverse().join(""), "server");
+			this.addMessage(e.data, "server");
+			//this.addMessage(e.data.split("").reverse().join(""), "server");
 		};
 
 		this.webSocket.onerror = (e) => {};
